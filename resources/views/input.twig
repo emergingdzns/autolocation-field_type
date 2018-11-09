@@ -1,0 +1,17 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ config_get('emergingdzns.field_type.autolocation::google_maps_api_key') }}&libraries=places"></script>
+
+{{ asset_add("scripts.js", "emergingdzns.field_type.autolocation::js/input.js") }}
+
+<div class="input-group component">
+
+    <input type="text"
+            class="form-control autolocation"
+            value="{{ field_type.value }}"
+            name="{{ field_type.input_name }}"
+            placeholder="{{ trans(field_type.placeholder) ?: 'City, State and Country' }}"
+            {{ html_attributes(field_type.attributes) }}
+            {{ config_get('emergingdzns.field_type.autolocation::ask_for_user_location') == true ? 'onFocus="geolocate()"':'' }}
+            {{ field_type.disabled ? 'disabled' }}
+            {{ field_type.readonly ? 'readonly' }}>
+
+</div>
